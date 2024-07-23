@@ -1,0 +1,52 @@
+    <nav class="navbar navbar-expand-md navbar-light">
+
+        <a class="navbar-brand" href="/"><i class="fa fa-cube"></i>{{title}}</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="browse-state">Browse</a>
+                </li>
+
+                <li class="nav-item text-nowrap" *ngIf="(authService.sessionActive | async)">
+                    <a class="nav-link" routerLink="create-view">Create view</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+
+                <li class="nav-item dropdown" *ngIf="(authService.sessionActive | async)">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <img src="/assets/blank_avatar.png" class="avatar" alt="Avatar">{{authService.getFullname()}}<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a (click)="clickLocalLogout()" class="dropdown-item"><i class="fa fa-user-o"></i> Logout</a></li>
+                        <li><a (click)="clickAdmin()" class="dropdown-item"><i class="fa fa-gears"></i> Admin</a></li>
+                        <li><a href="https://github.com/ActiveBrainAtlas2/activebrainatlasadmin/issues" class="dropdown-item"><i class="fa fa-check"></i> Issue tracker</a></li>
+                        <li><a href="https://webdev.dk.ucsd.edu/docs/brainsharer/" class="dropdown-item"><i class="fa fa-info"></i> Database portal</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown" *ngIf="!(authService.sessionActive | async)">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" >
+                        <img src="/assets/blank_avatar.png" class="avatar" alt="Avatar">Guest <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu" style="right: 0; left: auto;">
+                        <li><a (click)="clickGoogle()" class="dropdown-item"><img src="/assets/btn_google_signin_light_normal_web.png"></a></li>
+                        <li><a (click)="clickLocalLogin()"  class="dropdown-item"><i class="fa fa-user-o"></i> Local login</a></li>
+                        <li><a (click)="clickLocalRegister()" class="dropdown-item"><i class="fa fa-sliders"></i> Register</a></li>
+                        <li><a (click)="clickLocalLostPassword()" class="dropdown-item"><i class="fa fa-key"></i> Forgot password</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </nav>

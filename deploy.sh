@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if ! command -v ng &> /dev/null
+then
+    echo "ng could not be found"
+    exit 1
+fi
+
+
 if [ "$1" == "" ] || [ $# -gt 1 ]; then
         echo "Enter either 'production' or 'demo' as an argument."
 	exit 0

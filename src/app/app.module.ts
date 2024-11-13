@@ -12,7 +12,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './_shared/header/header.component';
-import { CollaborationComponent } from './pages/collaboration/collaboration.component';
+import { CollaborationComponent } from './pages/docs/collaboration.component';
+import { SegmentationComponent } from './pages/docs/segmentation.component';
 import { AuthService } from './_services/auth.service';
 import { AuthGuard } from 'src/app/_services/auth.guard';
 import { InterceptService } from 'src/app/_services/intercept.service';
@@ -23,6 +24,7 @@ import { FooterComponent } from './_shared/footer/footer.component';
     declarations: [
         AppComponent,
         CollaborationComponent,
+        SegmentationComponent,
         HeaderComponent,
         FooterComponent
     ],

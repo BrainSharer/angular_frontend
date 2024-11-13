@@ -1,0 +1,57 @@
+<div class="container brain">
+
+  <div class="row">
+    <div class="col-12">
+      <h3>Creating 3D segmentations/meshes in Brainsharer Neuroglancer</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <p>Brainsharer Neuroglancer allows you to create 3D segmentations/meshes from the annotation data. This is a step-by-step guide to create a 3D mesh from the annotation data.</p>
+      <p>This process will be simplified once the UI is finished.</p>
+    </div>
+
+  <div class="row">
+    <div class="col-12">
+
+      <div class="list-group">
+        <h5>Exporting volumes</h5>
+        <ul class="doc-group">
+          <li class="doc-group-item">Go to the Neuroglancer view: e.g., https://brainsharer.org/ng/?id=945 .</li>
+          <li class="doc-group-item">Select annotation layer with control click.</li>
+          <li class="doc-group-item">Make sure each volume you want to export is labeled.</li>
+          <li class="doc-group-item">Click on a volume and go to the selection area in the lower right.</li>
+          <li class="doc-group-item">Click the 'new' icon. This will export the volume data to the database.</li>
+        </ul>
+
+        <h5>Find exported annotation IDs</h5>
+        <ul class="doc-group">
+          <li class="doc-group-item">Go to: https://brainsharer.org/brainsharer/admin/neuroglancer/annotationdata/ The data is sorted with the most recentlty
+            exported data at the top.</li>
+          
+          <li class="doc-group-item">Find the ID of the annotation you just exported. For this example it is 999.</li>
+          <li class="doc-group-item">Type this in the URL location area of your browser: https://brainsharer.org/brainsharer/annotations/segmentation/999</li>
+          <li class="doc-group-item">This will take 10 to 60 seconds to complete. At the end you will see a brief response like: 
+            <pre>"url": "precomputed://https://brainsharer.org/structures/CTB004_SC_Gray_Matter", "name": "CTB004_SC_Gray_Matter"</pre>
+          </li>
+          <li class="doc-group-item">Copy 'https://brainsharer.org/structures/CTB004_SC_Gray_Matter' . We will use it in a new layer in Neuroglancer</li>
+        </ul> 
+
+        <h5>Create segmenation</h5>
+        <ul class="doc-group">
+          <li class="doc-group-item">Open up Neuroglancer and go back to your original view: https://brainsharer.org/ng/?id=945</li>
+          <li class="doc-group-item">Create a new image/mesh layer (NOT annotation layer) by clicking the '+' icon at the top of the view.</li>
+          <li class="doc-group-item">In the precomputed load area, paste the URL you copied earlier.</li>
+          <li class="doc-group-item">This will load the mesh into the 3 quadrants. </li>
+          <li class="doc-group-item">To display the 3D mesh in the lower left quadrant:</li>
+          <li class="doc-group-item">Go to the 'Seg.' tab in the top right tab.</li>
+          <li class="doc-group-item">Toggle the 'eye' icon. The mesh should now appear in the lower left quadrant.</li>
+          <li class="doc-group-item">Repeat for each volume you want to export and display as a mesh.</li>
+        </ul>      
+      </div>
+
+
+    </div>
+  </div>
+</div>

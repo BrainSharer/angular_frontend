@@ -1,0 +1,21 @@
+h2 {
+    margin: 10px;
+}
+
+table,
+  th,
+  td {
+    border: 1px solid;
+  }
+
+  .brain {
+    padding: 10px;
+  }
+
+  .doc-group {
+    margin: 10px;
+  }
+
+  .doc-group-item {
+    margin: 2px 0px 2px 10px;
+  }

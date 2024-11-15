@@ -19,3 +19,7 @@ table,
   .doc-group-item {
     margin: 2px 0px 2px 10px;
   }
+
+  .simple {
+    margin: 2px;
+  }

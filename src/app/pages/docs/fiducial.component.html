@@ -1,0 +1,170 @@
+<div class="container brain">
+  <div class="row">
+    <div class="col">
+      <h2>Brain section alignment with fiducials</h2>
+    </div>
+  </div>
+
+  <div>
+
+    <p><strong>Background</strong>
+      As part of the data ingestion pipeline onto brainsharer.org, sections must be aligned.
+      The general pipeline steps allow for automated alignment post-masking. Unfortunately, some sections may
+      still be out of alignment and require fiducials to properly align specific sections to the rest of the image
+      stack.</p>
+    <p>After the pipeline has completed (Neuroglancer-compatible image stack created and visible from
+      brainsharer.org), the user should identify which sections are out of alignment, create fiducials and re-rerun
+      alignment.
+      This document describes these steps.</p>
+    <p><strong>Process and example</strong></p>
+    <ul class="doc-group-item">
+      <li>
+        <dl class="doc-group-item">
+          Create the first aligned image stack in the pipeline:
+          <dd>
+            <code>python src/pipeline/scripts/create_pipeline.py –task align –animal ANIMAL_ID</code>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl class="doc-group-item">
+          Create the first aligned precomputed data stack in the pipeline:
+          <dd>
+            <code>python src/pipeline/scripts/create_pipeline.py –task neuroglancer –animal ANIMAL_ID</code>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <p>In a browser, open up Neuroglancer and create a new view.</p>
+      </li>
+      <li>
+        <p>Add the first layer with the ‘+’ icon. This initial layer will have a source such as: <a
+            class="reference external"
+            href="https://imageserv.dk.ucsd.edu/data">https://imageserv.dk.ucsd.edu/data</a>/ANIMAL_ID/neuroglancer_data/C1T_aligned.
+        </p>
+      </li>
+      <li>
+        <p>This will be the layer where you will add the fiducials. This layer has already been aligned, but most brains
+          need fiducials to make the alignment more accurate.</p>
+      </li>
+      <li>
+        <p>Open up the upper left quadrant. You may need to adjust the brightness and contrast to see the image better.
+          See the ‘Adjusting colors’ page for more information.</p>
+      </li>
+      <li>
+        <p>Identify which section(s) are not properly aligned through Neuroglancer interface. The z value is the section
+          number.</p>
+      </li>
+      <li>
+        <p>Navigate to non-aligned section (in figure below this is section 75).</p>
+      </li>
+    </ul>
+    <img alt="realignment" src="/assets/realignment.1.png" />
+    <ul class="doc-group-item">
+      <li>
+        <p>Create a new annotation layer (just click CTRL and the “+” icon next to the “C1T_aligned” layer. That creates
+          a new annotation layer.</p>
+      </li>
+      <li>
+        <p>Click the ‘Annotations’ tab on the top far right, then click the ‘Annotate cloud’ icon on the far right (in
+          red box)</p>
+      </li>
+    </ul>
+    <img alt="realignment" src="/assets/realignment.2.png" />
+    <ul class="doc-group-item">
+      <li>
+        <p>Pick 2 or 3 points on aligned section and save with a Fiducial label.</p>
+      </li>
+    </ul>
+    <p><strong>Adding fiducial label</strong></p>
+    <ul class="doc-group-item">
+      <li>
+        <p>Go to the lower right panel and type ‘Fiducial’ in the text box that says ‘Add annotation labels’. A search
+          result will pop up.</p>
+      </li>
+      <li>
+        <p>Select the ‘Fiducial’ selection</p>
+      </li>
+    </ul>
+    <p><strong>Save current state (the fiducial points must be exported!)</strong></p>
+    <ul class="doc-group-item">
+      <li>
+        <p>Click the ‘new’ (lower-case ‘n’) icon in lower-right corner of screen (see figure below)</p>
+      </li>
+      <li>
+        <p>Note: These are NOT same new/save buttons used for saving entire state! Those have upper-case letters.</p>
+      </li>
+      <li>
+        <p>N.B. If you add more points, make sure to click the ‘save’ button on the bottom far right.</p>
+      </li>
+      <li>
+        <p>Repeat cloud annotations for all non-aligned sections (same number of points)</p>
+      </li>
+    </ul>
+    <p><strong>Re-run alignment</strong></p>
+    <ol class="arabic simple">
+      <li>
+        <p>Login into one of the linux workstations</p>
+      </li>
+      <li>
+        <dl class="doc-group-item">
+          Navigate to /data/pipeline/ (contains all scripts)
+          <dd>
+            <code>cd /data/pipeline</code>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl class="doc-group-item">
+          Active the python virtual enviroment
+          <dd>
+            <code>/usr/local/share/pipeline/bin/activate</code>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl class="doc-group-item">
+          Run realign step [for channel 1, downsampled]
+          <dd>
+            <code>python src/pipeline/scripts/create_pipeline.py --task realign --animal ANIMAL_ID</code>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl class="doc-group-item">
+          Run neuroglancer step [for channel 1, downsampled]
+          <dd>
+            <code>src/pipeline/scripts/create_pipeline.py --task neuroglancer --animal ANIMAL_ID</code>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <dl class="doc-group-item">
+          The newly aligned data will be available as a new precomputed data stack. Open up a new layer and enter
+            this as a precomputed data source:
+          <dd>
+            <p><code>https://imageserv.dk.ucsd.edu/data/ANIMAL_ID/neuroglancer_data/C1T_realigned</code>
+            </p>
+          </dd>
+        </dl>
+      </li>
+      <li>
+        <p>Check the alignment of the sections with fiducials. If the alignment is still not correct, add more/better
+          fiducials and repeat the process.</p>
+      </li>
+    </ol>
+    <dl class="doc-group-item">
+      <dt><strong>Note</strong></dt>
+      <dd>
+        <p>The pipeline process will use the realigned data stack if it exists, otherwise, it will use the original
+          aligned data stack.</p>
+      </dd>
+    </dl>
+  </div>
+
+
+
+
+
+
+</div>

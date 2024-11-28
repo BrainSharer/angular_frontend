@@ -29,7 +29,7 @@ export class BrowseStateComponent implements OnInit {
   offset = 0;
   isLoading = true;
   description_filter: string | undefined;
-  lab_filter: number | undefined;
+  lab_filter: string | undefined;
   labs: Lab[] = [];
   neuroglancer_states: NeuroglancerState[] = [];
 
@@ -69,7 +69,7 @@ export class BrowseStateComponent implements OnInit {
    * The lab search ID is set and the data is set from the REST API
    * @param labId integer for the Lab ID
    */
-  public searchLab(labId: number): void {
+  public searchLab(labId: string): void {
     this.lab_filter = labId;
     this.page = 0;
     this.setData();
@@ -137,7 +137,6 @@ export class BrowseStateComponent implements OnInit {
     if (this.lab_filter) {
       baseUrl += '&lab=' + this.lab_filter;
     }
-
 
     return baseUrl;
   }

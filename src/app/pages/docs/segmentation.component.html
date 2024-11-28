@@ -8,23 +8,43 @@
 
   <div class="row">
     <div class="col-12">
-      <p>Brainsharer Neuroglancer allows you to create 3D segmentations/meshes from the annotation data. This is a step-by-step guide to create a 3D mesh from the annotation data.</p>
-      <p>This process will be simplified once the UI is finished.</p>
+      <h5>Using the built in 3D mesh tool.</h5>
     </div>
 
   <div class="row">
     <div class="col-12">
 
       <div class="list-group">
-        <h5>Exporting volumes</h5>
         <ul class="doc-group">
           <li class="doc-group-item">Go to the Neuroglancer view: e.g., https://brainsharer.org/ng/?id=945 .</li>
-          <li class="doc-group-item">Select annotation layer with control click.</li>
-          <li class="doc-group-item">Make sure each volume you want to export is labeled.</li>
-          <li class="doc-group-item">Click on a volume and go to the selection area in the lower right.</li>
-          <li class="doc-group-item">Click the 'new' icon. This will export the volume data to the database.</li>
+          <li class="doc-group-item">You must be logged in. Look for your login username in the top left area of the page.</li>
+          <li class="doc-group-item">Select the annotation layer with control click.</li>
+          <li class="doc-group-item">Make sure the volume you want to create is labeled.</li>
+          <li class="doc-group-item">Look for the download icon in the volume you wish to work on. 
+            Simply click that and a new layer will appear with your newly created 3D mesh.</li>
         </ul>
-
+      </div>
+    </div>
+  </div>
+        <div class="row">
+          <div class="col-12">
+            <h5>A step-by-step guide to manually create a 3D mesh from the annotation data.</h5>
+            <p>This process is just for developers. End users should use the much simpler process explained above.</p>
+          </div>
+      
+        <div class="row">
+          <div class="col-12">
+      
+            <div class="list-group">
+              <h5>Exporting volumes</h5>
+              <ul class="doc-group">
+                <li class="doc-group-item">Go to the Neuroglancer view: e.g., https://brainsharer.org/ng/?id=945 .</li>
+                <li class="doc-group-item">Select annotation layer with control click.</li>
+                <li class="doc-group-item">Make sure each volume you want to export is labeled.</li>
+                <li class="doc-group-item">Click on a volume and go to the selection area in the lower right.</li>
+                <li class="doc-group-item">Click the 'new' icon. This will export the volume data to the database.</li>
+              </ul>
+      
         <h5>Find exported annotation IDs</h5>
         <ul class="doc-group">
           <li class="doc-group-item">Go to: https://brainsharer.org/brainsharer/admin/neuroglancer/annotationdata/ The data is sorted with the most recentlty

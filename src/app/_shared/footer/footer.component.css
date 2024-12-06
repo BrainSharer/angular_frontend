@@ -2,3 +2,7 @@ footer{
   bottom:0px;
   width:100%;
 }
+
+.nav-link{
+  padding-top: 0px;
+}

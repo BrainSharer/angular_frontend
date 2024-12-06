@@ -69,23 +69,23 @@
                   No data matched the filter(s).
                 </td>
               </tr>
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                  <td mat-cell *matCellDef="let element"><b>{{element.lab}}</b> {{element.description}}></td>
+                </ng-container>
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> URL ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+                </ng-container>
 
-              <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                <ng-container matColumnDef="neuroglancer_view">
+                  <th mat-header-cell *matHeaderCellDef> Neuroglancer view </th>
+                  <td mat-cell *matCellDef="let element">
+                    <a class="hoverlink" (click)="redirectToView(element.id)"><img src="/assets/icon_collaboration.png"
+                        alt="Neuroglancer Collaboration Mode" title="Launch Neuroglancer in collaborative annotation mode"></a>
+                  </td>
+                </ng-container>
 
-                <td mat-cell *matCellDef="let element" [innerHTML]="element.description"></td>
-              </ng-container>
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> URL ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-              </ng-container>
-            
-            <ng-container matColumnDef="neuroglancer_view">
-              <th mat-header-cell *matHeaderCellDef> Neuroglancer view </th>
-              <td mat-cell *matCellDef="let element">
-                <a class="hoverlink" (click)="redirectToView(element.id)"><img src="/assets/icon_collaboration.png" alt="Neuroglancer Collaboration Mode" title="Launch Neuroglancer in collaborative annotation mode"></a>
-              </td>
-          </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>

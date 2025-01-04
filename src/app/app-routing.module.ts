@@ -5,6 +5,7 @@ import { CollaborationComponent } from './pages/docs/collaboration.component';
 import { FiducialComponent } from './pages/docs/fiducial.component';
 import { SegmentationComponent } from './pages/docs/segmentation.component';
 import { PolygonsComponent } from './pages/docs/polygons.component';
+import { ShortcutsComponent } from './pages/docs/shortcuts.component';
 
 const browseStateModule = () => import('./pages/browse-state/browse-state.module').then(x => x.BrowseStateModule);
 
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'fiducial', component: FiducialComponent  },
     { path: 'polygons', component: PolygonsComponent  },
     { path: 'segmentation', component: SegmentationComponent  },
+    { path: 'shortcuts', component: ShortcutsComponent  },
     // otherwise redirect to home
     { path: '**', redirectTo: ''  }
 ];

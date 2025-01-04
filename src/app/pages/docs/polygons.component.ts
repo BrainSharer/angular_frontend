@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-polygons',
   templateUrl: './polygons.component.html',
-  styleUrls: ['./docs.css']
+  styleUrls: ['./docs.css'],
+  standalone: true,
+  imports: [RouterModule]
 })
-export class PolygonsComponent implements OnInit {
+export class PolygonsComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

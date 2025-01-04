@@ -1,24 +1,25 @@
 <div class="container brain">
   <div class="row">
     <div class="col">
-      <h2>3D contour creation from annotations</h2>
+      <h2>Creating polygons</h2>
     </div>
   </div>
 
-  <div>
-
+  <div class="row">
+    <div class="col">
     <p>
-      3D contour creations may be constructed from polygon annotations and superimposed on existing brain images. Prior to
-      creating them, you will need to create polygon annotations around the region of interest (ROI). To create more accurate
-      3D structures, you should create polygons with many vertices, especially around edges.
+      Neuorglancer provides the capablity to create multiple types of annotations. The Brainsharer version of Neuroglancer
+      extends these capabilities to include the creation of polygons. These polygons can be used to create 3D contours of
+      cytoarchitecture artifacts. The following steps describe how to create polygons in Neuroglancer and how to use them.
     </p>
+
+    </div>
 
   </div>
 
   <div class="row">
     <div class="col">
-      <h3>Process and example </h3>
-      <h4>Create annotations</h4>
+      <h4>Logging in and finding your data</h4>
       <ul>
         <li>Login to brainsharer.org Admin page (upper right-hand corner of page):</li>
         <img alt="Brainsharer login part 1" src="/assets/polygons.1.login.png" />
@@ -28,51 +29,28 @@
         <img alt="Brainsharer navigate" src="/assets/polygons.3.navigate.png" />
         <li>Use top search tool to locate Neuroglancer states by typing brain name (animal id):</li>
         <img alt="Brainsharer search" src="/assets/polygons.4.search.png" />
-        <li>Click on link in ‘Neuroglancer’ column to open this brain state in Neuroglancer (smaller box in figure above)
-        </li>
-        <li>Create polygons on the sections that contain cytoarchitecture artifacts of interest. 
-          Polygon creation is described on: https://webdev.dk.ucsd.edu/docs/brainsharer/neuroglancer/modules/polygon_tool.html
+        <li>Click on the desired link under the ‘NEUROGLANCER’ column to open this brain state in Neuroglancer
         </li>
       </ul>
-      <h4>Previw and save annotations</h4>
+      <h4>Creating polygons</h4>
       <ul>
-        <li>Once the polygons are created with sufficient detail, go to the layer (top tabs) where they are listed and 
-          select ‘Annotations’ subtab (upper-right corner of screen):</li>
-        <img alt="Brainsharer annotations" src="/assets/polygons.5.annotations.png" />
-        <li>Select annotation set of interest. in figure above, TG_L is selected. When you roll your mouse cursor over the 
-          annotation set that contains the polygons to be used for the 3D contour creation, 
-          you may see an arrow icon (pointing down) to represent that this annotation set may be used for creating a 3D contour.</li>
-        <img alt="Brainsharer select annotation" src="/assets/polygons.6.select.annotation.png" />
-        <p>Note: If this icon does not appear, you will need to triage just those polygons from larger ‘Neuroglancer state’. 
-          This is accomplished by creating a new annotation set in database through the following steps: 1) with polygons selected 
-          in top panel, click on ‘new’ button in lower panel. 2) A notification in lower-left will indicate when the creation is complete.
-        </p>
-        <img alt="Brainsharer selection info" src="/assets/polygons.7.selection.info.png" />
-      </ul>
-      <h4>Generate 3D mesh/contour view</h4>
-      <ul>
-        <li>Returning to upper-right annotations panel, click the arrow icon (pointing down). 
-          This will generate a 3D view of the stacked polygons, using interpolation. Notification in lower-left will say ‘creating 3d mesh’.</li>
-        <p>Note: A new layer tab will appear at top, next to existing annotation/image tabs. This segmentation layer will have the new 3D contour/mesh.
-        </p>
-        <li>To view the 3D contour/mesh in display panels, you will need to toggle visibility. 
-          To accomplish this, select ‘Seg.’ tab in upper part of the new 3D contour layer. 
-          Below selection, you will see a cross-out eye icon which must be clicked to show the 3D contour/mesh.
-        </li>
-        <img alt="Brainsharer view" src="/assets/polygons.8.view.png" />
-        <p>Note: You may wish view multiple overlays on a single region of interest. For better visibility, you may adjust opacity of annotations and/or contours. 
-          For the contour/mesh volumes, the adjustments may be found on the ‘Render’ tab. The settings that affect contours are the ones ending in ‘3d’.
-        </p>
-        <img alt="Brainsharer view multiple" src="/assets/polygons.9.view.multiple.png" />
+        <li>You will need to create a new layer. Do this by holding the CTRL key and clicking the '+' icon just right of the right most open layer.</li>
+        <li>In the upper right part the window, click the annotations tab.</li>
+        <li>There are 7 types of different annotation icons. Click the square icon. Hovering over this you should see a 'Annotate volume' help text.</li>
+        <li>A volume is simply a set of polygons that will create the 3D outline of the brain region you are working on.</li>
+        <li>You will want to add polygons using just one quadrant, so click the maximize icon in the upper left quadrant view.</li>
+        <li>Using the 'Z' dropdown menu near the top left of the window, go to the z section you want to start on.</li>
+        <li>Using 'CTRL' click, start adding vertices to complete a polygon on the current section. Click 'enter' to automatically close the polygon.</li>
+        <li>Create one polygon per section for an individual volume. Carry on this process on each section you want to create a polygon on.</li>
+        <li>Remember to save the Neuroglancer state as you go along by clicking the 'Save' icon in the upper left side panel.</li>
+        <li>For help with keyboard operations and shortcuts, look here: <a routerLink="/shortcuts">keyboard shortcuts</a></li>
+        
+        
       </ul>
         
 
     </div>
   </div>
-
-      
-
-
 
 
 </div>

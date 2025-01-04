@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-fiducial',
-  templateUrl: './fiducial.component.html',
+  selector: 'app-shortcuts',
+  templateUrl: './shortcuts.component.html',
   styleUrls: ['./docs.css']
 })
-export class FiducialComponent {
+export class ShortcutsComponent {
 
   constructor() { }
 

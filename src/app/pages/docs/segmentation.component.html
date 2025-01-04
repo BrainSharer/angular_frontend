@@ -1,100 +1,73 @@
 <div class="container brain">
-
   <div class="row">
-    <div class="col-12">
-      <h3>Creating 3D segmentations/meshes in Brainsharer Neuroglancer</h3>
+    <div class="col">
+      <h2>Creating 3D meshes/segmentions</h2>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-12">
-      <h5>Using the built in 3D mesh tool with an annotation layer already visible.</h5>
+    <div class="col">
+    <p>
+      3D contour creations may be constructed from polygon annotations and superimposed on existing brain images. Prior to
+      creating the 3D contours, you will need to create polygon annotations around the region of interest (ROI). To create more accurate
+      3D structures, you should create polygons with many vertices, especially around edges.
+    </p>
+
     </div>
 
-  <div class="row">
-    <div class="col-12">
+  </div>
 
-      <div class="list-group">
-        <ul class="doc-group">
-          <li class="doc-group-item">Go to the Neuroglancer view: e.g., https://brainsharer.org/ng/?id=945 .</li>
-          <li class="doc-group-item">You must be logged in. Look for your login username in the top left area of the page.</li>
-          <li class="doc-group-item">Select the annotation layer with control click.</li>
-          <li class="doc-group-item">Make sure the volume you want to create is labeled.</li>
-          <li class="doc-group-item">Look for the download icon in the volume you wish to work on. 
-            Simply click that and a new layer will appear with your newly created 3D mesh.</li>
+  <div class="row">
+    <div class="col">
+      <h4>Create annotations</h4>
+      <ul>
+        <li>Make sure you are logged in and you are viewing your existing set of polygons that contain cytoarchitecture artifacts of interest. 
+          Logging in and polgyon creation is described on: <a routerLink="polygons">Creating polygons</a>
+        </li>
+      </ul>
+      <h4>Preview and save annotations</h4>
+      <ul>
+        <li>Once the polygons are created with sufficient detail, go to the layer (top tabs) where they are listed and 
+          select ‘Annotations’ subtab (upper-right corner of screen):</li>
+        <img alt="Brainsharer annotations" src="/assets/polygons.5.annotations.png" />
+        <li>Select the annotation set of interest. In the figure above, TG_L is selected. When you roll your mouse cursor over the 
+          annotation set that contains the polygons to be used for the 3D contour creation, 
+          you should see an arrow icon (pointing down) to represent that this annotation set may be used for creating a 3D contour.</li>
+        <img alt="Brainsharer select annotation" src="/assets/polygons.6.select.annotation.png" />
+        <p>Note: If this icon does not appear, make sure you are logged in and that your data has been labeled (this data has been labeled TG_L) and exported.
+          This is accomplished by creating a new annotation set in database through the following steps:
+        </p>
+        <ul>
+          <li> 1) with polygons selected
+            in top panel, click on ‘new’ button in lower panel.</li>
+          <li> 2) A notification in lower-left will indicate when the creation is complete.</li>
         </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12">
-      <h5>Importing the annotations/polygons and then using the built in 3D mesh tool.</h5>
-    </div>
-
-  <div class="row">
-    <div class="col-12">
-
-      <div class="list-group">
-        <ul class="doc-group">
-          <li class="doc-group-item">You must be logged in. Look for your login username in the top left area of the page.</li>
-          <li class="doc-group-item">Create a new annotation layer by clicking <code>control +</code></li>
-          <li class="doc-group-item">Go to the Annotations panel on the far right side.</li>
-          <li class="doc-group-item">In the 'Search for annotations' text box, type the brain name, then the structure. Make sure you select one
-            with 'volume' and not 'point'. Import that, the polygons will appear in the bottom right side view area.</li>
-          <li class="doc-group-item">Look for the download icon in the volume you wish to work on. 
-            Simply click that and a new layer will appear with your newly created 3D mesh.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  
-        <div class="row">
-          <div class="col-12">
-            <h5>A step-by-step guide to manually create a 3D mesh from the annotation data.</h5>
-            <p>This process is just for developers. End users should use the much simpler process explained above.</p>
-          </div>
-      
-        <div class="row">
-          <div class="col-12">
-      
-            <div class="list-group">
-              <h5>Exporting volumes</h5>
-              <ul class="doc-group">
-                <li class="doc-group-item">Go to the Neuroglancer view: e.g., https://brainsharer.org/ng/?id=945 .</li>
-                <li class="doc-group-item">Select annotation layer with control click.</li>
-                <li class="doc-group-item">Make sure each volume you want to export is labeled.</li>
-                <li class="doc-group-item">Click on a volume and go to the selection area in the lower right.</li>
-                <li class="doc-group-item">Click the 'new' icon. This will export the volume data to the database.</li>
-              </ul>
-      
-        <h5>Find exported annotation IDs</h5>
-        <ul class="doc-group">
-          <li class="doc-group-item">Go to: https://brainsharer.org/brainsharer/admin/neuroglancer/annotationdata/ The data is sorted with the most recentlty
-            exported data at the top.</li>
-          
-          <li class="doc-group-item">Find the ID of the annotation you just exported. For this example it is 999.</li>
-          <li class="doc-group-item">Type this in the URL location area of your browser: https://brainsharer.org/brainsharer/annotations/segmentation/999</li>
-          <li class="doc-group-item">This will take 10 to 60 seconds to complete. At the end you will see a brief response like: 
-            <pre>"url": "precomputed://https://brainsharer.org/structures/CTB004_SC_Gray_Matter", "name": "CTB004_SC_Gray_Matter"</pre>
-          </li>
-          <li class="doc-group-item">Copy 'https://brainsharer.org/structures/CTB004_SC_Gray_Matter' . We will use it in a new layer in Neuroglancer</li>
-        </ul> 
-
-        <h5>Create segmentation</h5>
-        <ul class="doc-group">
-          <li class="doc-group-item">Open up Neuroglancer and go back to your original view: https://brainsharer.org/ng/?id=945</li>
-          <li class="doc-group-item">Create a new image/mesh layer (NOT annotation layer) by clicking the '+' icon at the top of the view.</li>
-          <li class="doc-group-item">In the precomputed load area, paste the URL you copied earlier.</li>
-          <li class="doc-group-item">This will load the mesh into the 3 quadrants. </li>
-          <li class="doc-group-item">To display the 3D mesh in the lower left quadrant:</li>
-          <li class="doc-group-item">Go to the 'Seg.' tab in the top right tab.</li>
-          <li class="doc-group-item">Toggle the 'eye' icon. The mesh should now appear in the lower left quadrant.</li>
-          <li class="doc-group-item">Repeat for each volume you want to export and display as a mesh.</li>
-        </ul>      
-      </div>
-
+        <img alt="Brainsharer selection info" src="/assets/polygons.7.selection.info.png" />
+      </ul>
+      <h4>Generate 3D mesh/contour view</h4>
+      <ul>
+        <li>Returning to upper-right annotations panel, click the arrow icon (pointing down). 
+          This will generate a 3D view of the stacked polygons, using interpolation. Notification in lower-left will say ‘creating 3d mesh’.</li>
+        <p>Note: A new layer tab will appear at top, next to existing annotation/image tabs. This segmentation layer will have the new 3D contour/mesh.
+        </p>
+        <li>To view the 3D contour/mesh in display panels, you will need to toggle visibility. 
+          To accomplish this, select ‘Seg.’ tab in upper part of the new 3D contour layer. 
+          Below selection, you will see a cross-out eye icon which must be clicked to show the 3D contour/mesh.
+        </li>
+        <img alt="Brainsharer view" src="/assets/polygons.8.view.png" />
+        <p>Note: You may wish view multiple overlays on a single region of interest. For better visibility, you may adjust opacity of annotations and/or contours. 
+          For the contour/mesh volumes, the adjustments may be found on the ‘Render’ tab. The settings that affect contours are the ones ending in ‘3d’.
+        </p>
+        <img alt="Brainsharer view multiple" src="/assets/polygons.9.view.multiple.png" />
+      </ul>
+        
 
     </div>
   </div>
+
+      
+
+
+
+
 </div>

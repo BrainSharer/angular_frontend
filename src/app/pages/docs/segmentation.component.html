@@ -47,8 +47,15 @@
       <h4>Generate 3D mesh/contour view</h4>
       <ul>
         <li>Returning to upper-right annotations panel, click the arrow icon (pointing down). 
-          This will generate a 3D view of the stacked polygons, using interpolation. Notification in lower-left will say ‘creating 3d mesh’.</li>
-        <p>Note: A new layer tab will appear at top, next to existing annotation/image tabs. This segmentation layer will have the new 3D contour/mesh.
+          This will display a small popup window where you can select the smoothing and interpolation options.
+          The default options are usually sufficient. If you want no smoothing, set the x,y,z values to 0 and select 'No' for interpolation in the Z plane.
+          Increasing the x,y,z values will result in a smoother contour/mesh.
+          Click ‘Run’ to begin the process. The popup will close automatically and you will see a notification in the lower-left of the screen.
+        </li> 
+          <img alt="Brainsharer selection info" src="/assets/smoothing.popup.png" />
+        <p>* Note: A new layer tab will appear at top, next to existing annotation/image tabs. This segmentation layer will have the new 3D contour/mesh.
+        <p>** Note: If you adjust the smoothing variables multiple times, you'll need to first save the view with the 'Save' button and then reload the page.
+          Your browser may cache the previous version of the contour/mesh and not show the updated version until the page is reloaded.
         </p>
         <li>To view the 3D contour/mesh in display panels, you will need to toggle visibility. 
           To accomplish this, select ‘Seg.’ tab in upper part of the new 3D contour layer. 
